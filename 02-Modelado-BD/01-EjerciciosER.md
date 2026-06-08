@@ -1,11 +1,10 @@
 # EJERCICIOS DEL MODELO E-R 
-## EJERCIIO 1.
+## EJERCICIO 1.
 
-UN HOSPITAL REGISTRA INFROMACION DE SUS PASCIENTES: 
+UN HOSPITAL REGISTRA INFROMACION DE SUS PACIENTES: 
 
 > DE CADA PACIENTE SE ALMACENA:
-- numero de pasciente que lo
-identifica
+- numero de pasciente que lo identifica
 - Nombre
 - Fecha de Naciemiento
 
@@ -15,14 +14,10 @@ identifica
 - Tipo de Sangre
 
 > Reglas del Negocio
-1. Cada pasciente debe tener exactamente 
-un expediente medico
-2. Cada expediente medico pertenece 
-a un unico pasciente 
-3. No puede existir un expediente sin
-pasciente
-4. No puede existir un pasciente
-sin expediente
+1. Cada pasciente debe tener exactamente  un expediente medico
+2. Cada expediente medico pertenece  a un unico pasciente 
+3. No puede existir un expediente sin pasciente
+4. No puede existir un pasciente     sin expediente
 
 > Que se debe realizar:
 
@@ -32,4 +27,8 @@ sin expediente
 - Determinar la cardianlidad 
 - Determinar la participacion de cada entidad
 
-git
+![Ejercicio1](/img/ER/Base%20de%20datos.drawio.png)
+
+## EJERCICIO 2.
+
+
