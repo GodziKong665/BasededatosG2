@@ -50,3 +50,4 @@ d01cc
 | docker rm idcontenedor o nombrecontenedor| **ELimina un contenedor pero si esta apagado** | 
 | docker rm -f idcontenedor o nombrecontenedor| **ELimina un contenedor pero si esta apagado** | 
 
+
