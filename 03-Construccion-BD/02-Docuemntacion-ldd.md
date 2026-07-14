@@ -1,21 +1,27 @@
-# Construccion de Base de Datos en SQL Server, My SQL y Postgress
 
-Para la construccion de objetos de la base de datops se utilizara el lenguaje SQL (Structure Query Languaje)
-se divide en "*Cinco Grandes Categorias*"
+02-documentacion-ldd.md
+Página
+1
+/
+1
+100 %
+# Construcción de BD en SQL Server, Mysql o MariaDB y Postgres
+
+Para la construcción de objetos de la base de datos se utiliza el lenguaje SQL (Structured Query Language) se divide en **cinco grandes categorias**
 
 ## SQL
-> DDL (Data Definition Languaje)
-> DDL (Data Manipulation Languaje)
-> DQl (Data Query Languaje)
-> DCL (Data Control Languaje)
-> TCLc (Transaction Control Languaje)
+- DDL (Data Definition Language)
+- DML (Data Manipulation Language)
+- DQL (Data Query Language)
+- DCL (Data Control Language)
+- TCL (Transaction Control Language)
 
-## DDl
-Lenguaje de Definicion de Datos
+### SQL-DDL 
+Lenguaje de Definición de Datos
 
-Se utiliza para **Crear y modificar la estructura** de una base de datos
+Se utiliza para **crear y modificar la estructura** de una base de datos
 
-Con DDL trabajamos sobre los objetos de la base de dtos:
+Con DDL trabajamos sobre los objetos de la base de datos:
 
 - Base de Datos
 - Tablas
@@ -23,104 +29,103 @@ Con DDL trabajamos sobre los objetos de la base de dtos:
 - Indices
 - Restricciones
 - Esquemas
-- Procedimientos Alamcenados
-- Funciones
-- Disparadores
+- Funciones 
+- Procedimientos Almacenados
+- Disparadores 
 
-**COMANDOS PRINCIPALES**
+**Comandos Principales**  
 
-| Comando | Funcion |
+| Comando | Función |
 | :--- | :--- |
-|Create | crear Objetos |
-|Alter | modificar Obejtos |
-| Drop | Eliminar Objetos |
-| Truncate | Vaciar una Tabla |
-| Rename | Renombrar Objetpos segun en SGBD|
+| Create | Crear Objetos |
+| Alter  | Modificar Objetos |
+| Drop  | Eliminar Objetos |
+| Truncate  | Vacia una tabla |
+| Rename  | Renombra objetos (Segun el SGBD) |
 
-### SQL-DML
+### SQL- DML
 
-**Lenguaje de Manipulacion de Datos**
+**Lenguaje de manipulación de datos**
 
-Sirve para **trabajar con la informacion almacenada**
+Sirve para **trabajar con la información almacenada**
 
-Nota: Aqui no cambia la estructura, sino los registros
+Nota: Aquí no cambia la estructura, sino los registros
 
 **Comandos Principales**
 
-| Comando | Funcion |
+| Comando | Función |
 | :--- | :--- |
-|INSERT | Inserta registros |
-|UPDATE | Actualiza registros |
-|DELETE | Eliminar regitros |
+| INSERT | Inserta Registros |
+| UPDATE  | Actualiza Registros |
+| DELETE  | Elimina Registros |
 
-### SQL_DQL
+### SQL-DQL
 
-Su Funcion es **consultar informacion**
+**Lenguaje de consulta de datos**
+
+Su función es **Consultar Información**
 
 **Comando Principal**
 
-| Comando | Funcion |
+| Comando | Función |
 | :--- | :--- |
-|SELECT | Consultar Informacion |
+| SELECT | Consultar Información |
 
-Generalmente se Combina con:
+Generalmente se combina con:
 
 - WHERE
 - ORDER BY
 - GROUP BY
 - HAVING
 - JOIN (LEFT, RIGHT, INNER, CROSS, FULL)
+- DISTINCT
 - TOP / LIMIT
-- FUNCIONES DE VENTANA 
+- FUNCIONES DE AGREGADO
+- FUNCIONES DE VENTANA
 
-## NOMENCLATURA DE CONSTRUCCION
-Utilizaremos la convencion **Snake-case**
 
-| Objeto | Convencion | Ejemplo |
-| :--- | :--- | :--- |
-| Base de Datos | snake_case | control_escolar |
-| Esquema | snake_case | ventas, rh, seguridad |
-| Tabla | snake_case | cliente, pedido, detalle,_pedido |
-| Columna | snake_case | cliente_id, fecha_registro, correo_electronico |
-| pk | <tabla_id> | cliente_id, producto_id |
-| FK | Igual que las PK referenciada | cliente_id, categoria_id|
-| Tabla puente | <tabla1>_<tabla2> | alumno_curso, producto_proveedor |
-| FK | Igual que las PK referenciada | cliente_id, categoria_id|
+## Nomenclatura de Construcción 
+
+Utilizaremos la convención **snake_case**
+
+| Objeto | Convención | Ejemplo |
+| :--- | :--- | :--- | 
+| Base de Datos | snake_case | control_escolar | 
+| Esquema | snake_case | ventas, rh, seguridad | 
+| Tabla | Singular en snake_case | cliente, pedido, detalle_pedido | 
+| Columna | snake_case | cliente_id, fecha_registro, correo_electronico | 
+| PK | <tabla>_id | cliente_id, producto_id |
+| FK | Igual que la PK referenciada | cliente_id, categoria_id|
+| Tabla puente | <tabla1>_<tabla2> | alumno_curso, producto_proveedor|
 
 **Restricciones**
 
 pk_cliente
-fk_pedio_cliente
+fk_pedido_cliente
 uq_cliente_correo_electronico
 ck_producto_precio
 df_cliente_activo
 
 
-### DDL EN SQL SERVER CREATE ALTER Y DROP para la creacion y modficacion de tablas
+### DDL en SQL Server CREATE, ALTER Y DROP para la creación y modificación de tablas
 
-**Sintaxis de Creacion de Tablas**
+**Sintaxis de creación de tablas**
 
-```sql
-CREATE TABLE nombre_tabla
-(
-    columna tipo_dato restricciones,
+```sql 
+  CREATE TABLE nombre_tabla
+  (
+    columna tipo_dato restricciones, 
     columna tipo_dato restricciones
-)
+  ) 
 ```
+### Alter Table 
 
+Permite modificar una tabla existente
 
+Puede:
 
-
-
-
-
-
-
-
-## SQL SERVER
-
-```sql
-CREATE
-ALTER
-DROP
-```
+- Agregar columnas
+- Eliminar Columnas
+- modificar columnas
+- agregar restricciones
+- eliminar restricciones
