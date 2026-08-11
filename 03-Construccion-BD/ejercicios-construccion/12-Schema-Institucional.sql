@@ -274,4 +274,4 @@ SELECT * FROM participa;
 SELECT * FROM dependiente;
 GO
 
-![Ejercicio1](../../img/construccion/Comercializadora.png)
+![Ejercicio1](../../img/construccion/Institucional.png)

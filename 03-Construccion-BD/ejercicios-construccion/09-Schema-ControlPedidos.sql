@@ -136,4 +136,4 @@ SELECT * FROM producto;
 SELECT * FROM detalle_pedido;
 GO
 
-![Ejercicio1](../../img/construccion/Comercializadora.png)
+![Ejercicio1](../../img/construccion/Pedidos.png)

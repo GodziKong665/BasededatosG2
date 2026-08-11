@@ -199,4 +199,4 @@ SELECT * FROM grupo;
 SELECT * FROM inscripcion;
 GO
 
-![Ejercicio1](../../img/construccion/Comercializadora.png)
+![Ejercicio1](../../img/construccion/Escolar.png)

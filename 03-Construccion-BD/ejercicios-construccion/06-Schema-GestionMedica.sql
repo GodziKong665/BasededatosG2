@@ -80,4 +80,4 @@ SELECT * FROM paciente;
 SELECT * FROM expediente;
 GO
 
-![Ejercicio1](../../img/construccion/Comercializadora.png)
+![Ejercicio1](../../img/construccion/Pasciente.png)

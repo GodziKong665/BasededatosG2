@@ -223,4 +223,4 @@ SELECT * FROM works_on;
 SELECT * FROM dependent;
 GO
 
-![Ejercicio1](../../img/construccion/Comercializadora.png)
+![Ejercicio1](../../img/construccion/CEmpresav2.png)

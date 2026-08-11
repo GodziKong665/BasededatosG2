@@ -101,4 +101,4 @@ SELECT * FROM profesor;
 SELECT * FROM especialidad;
 GO
 
-![Ejercicio1](../../img/construccion/Comercializadora.png)
+![Ejercicio1](../../img/construccion/Academico.png)

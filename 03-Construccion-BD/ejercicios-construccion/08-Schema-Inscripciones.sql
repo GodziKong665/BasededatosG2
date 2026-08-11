@@ -110,4 +110,4 @@ SELECT * FROM materia;
 SELECT * FROM inscribe;
 GO
 
-![Ejercicio1](../../img/construccion/Comercializadora.png)
+![Ejercicio1](../../img/construccion/Inscripciones.png)
