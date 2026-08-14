@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Infografia 2 - Funciones de Agregado GROUP BY HAVING</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 794px; }
+  body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    font-size: 10px; color: #26263d; background: #fff; line-height: 1.28;
+  }
+  .band {
+    background: linear-gradient(90deg, #3d3a86 0%, #5a56b8 60%, #7a76d8 100%);
+    color: #fff; padding: 10px 34px 8px; border-bottom: 6px solid #2b2866;
+  }
+  .band h1 { font-size: 20px; letter-spacing: 0.5px; }
+  .band .sub { font-size: 12px; color: #d4d2f5; margin-top: 2px; font-weight: 600; }
+  .band .who { float: right; text-align: right; font-size: 10px; color: #ecebfa; margin-top: 6px; line-height: 1.5; }
+  .page { padding: 9px 34px 0; }
+  h2 {
+    font-size: 12.5px; color: #fff; background: #3d3a86;
+    padding: 3px 10px; border-radius: 6px; margin: 7px 0 4px;
+    letter-spacing: 0.3px;
+  }
+  h2 .n { display: inline-block; background: #f6a94f; color: #26263d; border-radius: 4px; padding: 0 7px; margin-right: 8px; font-size: 12px; }
+  p { margin: 2px 0; }
+  .funcs { display: flex; gap: 6px; margin: 4px 0; }
+  .func {
+    flex: 1; border: 1px solid #c9c7ea; border-radius: 10px; overflow: hidden;
+    background: #fafaff;
+  }
+  .func .head { background: #5a56b8; color: #fff; text-align: center; font-weight: 700; font-size: 10.5px; padding: 2px; font-family: Consolas, monospace; }
+  .func .body { padding: 3px 6px; font-size: 8.7px; }
+  .func .body b { color: #3d3a86; }
+  .regla {
+    background: #efeefa; border-left: 4px solid #5a56b8; border-radius: 4px;
+    padding: 4px 9px; margin: 4px 0; font-size: 9.5px;
+  }
+  table { border-collapse: collapse; width: 100%; margin: 4px 0; }
+  th, td { border: 1px solid #c6c4e6; padding: 2px 5px; text-align: left; font-size: 9px; }
+  th { background: #5a56b8; color: #fff; font-weight: 600; }
+  tr:nth-child(even) td { background: #f4f4fd; }
+  pre {
+    background: #201f3f; color: #e6e4ff; font-family: Consolas, 'Courier New', monospace;
+    font-size: 8.8px; line-height: 1.35; padding: 7px 12px; border-radius: 8px;
+    margin: 4px 0; white-space: pre-wrap; border: 1px solid #3d3a86;
+  }
+  .kw { color: #a8a5ff; }
+  .flujo { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 4px 0; flex-wrap: wrap; }
+  .fbox { background: #5a56b8; color: #fff; border-radius: 6px; padding: 3px 8px; font-size: 9px; font-weight: 600; }
+  .fbox.ord { background: #f6a94f; color: #26263d; }
+  .farrow { color: #3d3a86; font-size: 12px; font-weight: 700; }
+  .conclu {
+    background: #3d3a86; color: #fff; border-radius: 8px; padding: 6px 12px;
+    margin-top: 6px; font-size: 10px;
+  }
+  .conclu b { color: #f6a94f; }
+  .fuentes { margin: 7px 0 0; font-size: 9px; color: #6a6a80; border-top: 1px dashed #c9c7ea; padding-top: 4px; }
+  .fuentes li { margin-left: 16px; }
+  .pie { text-align: center; font-size: 8.5px; color: #8d8da0; margin-top: 6px; }
+  .cod-cap { font-size: 9.5px; font-weight: 700; color: #3d3a86; margin-top: 4px; }
+  .dest { background: #fff7ec; border: 1px solid #f0c98f; border-radius: 8px; padding: 5px 9px; margin: 4px 0; font-size: 9.4px; }
+  .dest b { color: #b45309; }
+</style>
+</head>
+<body>
+  <div class="band">
+    <div class="who">Yeshua Emmanuel Navarro Perez<br>Grupo G2 &mdash; Bases de Datos<br>Universidad Tecnol&oacute;gica de Tula-Tepeji</div>
+    <h1>FUNCIONES DE AGREGADO Y AGRUPAMIENTO</h1>
+    <div class="sub">COUNT &middot; SUM &middot; AVG &middot; MIN &middot; MAX &middot; GROUP BY &middot; HAVING</div>
+  </div>
+
+  <div class="page">
+
+    <h2><span class="n">01</span>&iquest;Qu&eacute; son las funciones de agregado?</h2>
+    <p>Reciben un <b>conjunto de filas</b> (o un grupo) y devuelven <b>un &uacute;nico valor resumido</b>. Se combinan con <b>GROUP BY</b> para resumir por categor&iacute;as y con <b>HAVING</b> para filtrar los grupos. Usan las tablas reales de <b>comercial_db</b> (clientes, productos, detalle_ventas, empleados, departamentos).</p>
+
+    <h2><span class="n">02</span>Las cinco funciones b&aacute;sicas</h2>
+    <div class="funcs">
+      <div class="func">
+        <div class="head">COUNT()</div>
+        <div class="body">
+          Cuenta filas.<br>
+          <b>COUNT(*)</b>: todas las filas del grupo.<br>
+          <b>COUNT(col)</b>: filas con valor no NULL.<br>
+          <b>COUNT(DISTINCT col)</b>: valores &uacute;nicos.<br>
+          <code>SELECT COUNT(*) FROM clientes;</code> &rarr; 120
+        </div>
+      </div>
+      <div class="func">
+        <div class="head">SUM()</div>
+        <div class="body">
+          Suma valores <b>num&eacute;ricos</b>.<br>
+          Ignora los NULL.<br>
+          <code>SUM(dv.cantidad * dv.precio)</code><br>
+          importe total de ventas.<br>
+          <code>SUM(p.precio * p.existencia)</code> &rarr; valor del inventario.
+        </div>
+      </div>
+      <div class="func">
+        <div class="head">AVG()</div>
+        <div class="body">
+          Promedio de una columna num&eacute;rica.<br>
+          Solo considera filas no NULL.<br>
+          <code>AVG(e.salario)</code> &rarr; salario promedio de empleados.<br>
+          <code>AVG(dv.descuento)</code> &rarr; descuento promedio aplicado.
+        </div>
+      </div>
+      <div class="func">
+        <div class="head">MIN()</div>
+        <div class="body">
+          Valor <b>m&iacute;nimo</b> del conjunto.<br>
+          Sirve para n&uacute;meros, fechas o texto.<br>
+          <code>MIN(p.precio)</code> &rarr; producto m&aacute;s barato.<br>
+          <code>MIN(e.fecha_ingreso)</code> &rarr; empleado con m&aacute;s antig&uuml;edad.
+        </div>
+      </div>
+      <div class="func">
+        <div class="head">MAX()</div>
+        <div class="body">
+          Valor <b>m&aacute;ximo</b> del conjunto.<br>
+          Complemento de MIN().<br>
+          <code>MAX(p.precio)</code> &rarr; producto m&aacute;s caro.<br>
+          <code>MAX(v.fecha)</code> &rarr; fecha de la &uacute;ltima venta.
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="n">03</span>GROUP BY &mdash; agrupar para resumir</h2>
+    <div class="regla"><b>Regla:</b> agrupa las filas que tienen el <b>mismo valor</b> en las columnas indicadas. En el <b>SELECT</b> solo pueden aparecer columnas del GROUP BY o funciones de agregado.</div>
+    <table>
+      <tr><th>Consulta</th><th>Resultado</th></tr>
+      <tr><td><code>SELECT sexo, COUNT(*) FROM clientes GROUP BY sexo;</code></td><td>1 fila por sexo: M y F, con su total de clientes.</td></tr>
+      <tr><td><code>SELECT id_categoria, COUNT(*) FROM productos GROUP BY id_categoria;</code></td><td>Cu&aacute;ntos productos hay por cada categor&iacute;a.</td></tr>
+      <tr><td><code>SELECT id_departamento, AVG(salario) FROM empleados GROUP BY id_departamento;</code></td><td>Salario promedio de cada departamento.</td></tr>
+    </table>
+
+    <h2><span class="n">04</span>WHERE vs HAVING</h2>
+    <div class="dest"><b>&iquest;Cu&aacute;l usar?</b> <b>WHERE</b> filtra <b>FILAS</b> antes de agrupar; <b>HAVING</b> filtra <b>GRUPOS</b> despu&eacute;s de agrupar y puede usar funciones de agregado. El WHERE nunca acepta COUNT(), SUM(), etc.</div>
+    <table>
+      <tr><th></th><th>WHERE</th><th>HAVING</th></tr>
+      <tr><td><b>Momento</b></td><td>Filtra filas <b>ANTES</b> del agrupamiento</td><td>Filtra grupos <b>DESPU&Eacute;S</b> del agrupamiento</td></tr>
+      <tr><td><b>Agregados</b></td><td>No permite funciones de agregado</td><td>S&iacute; permite (ej. COUNT(*) &gt; 10)</td></tr>
+      <tr><td><b>Ubicaci&oacute;n</b></td><td>Antes del GROUP BY</td><td>Despu&eacute;s del GROUP BY</td></tr>
+      <tr><td><b>Ejemplo</b></td><td><code>WHERE salario &gt; 15000</code> &rarr; filas empleados</td><td><code>HAVING AVG(salario) &gt; 20000</code> &rarr; grupos departamento</td></tr>
+    </table>
+
+    <h2><span class="n">05</span>Orden de ejecuci&oacute;n l&oacute;gico de una consulta</h2>
+    <div class="flujo">
+      <span class="fbox">FROM</span><span class="farrow">&#8594;</span>
+      <span class="fbox">WHERE</span><span class="farrow">&#8594;</span>
+      <span class="fbox">GROUP BY</span><span class="farrow">&#8594;</span>
+      <span class="fbox">HAVING</span><span class="farrow">&#8594;</span>
+      <span class="fbox">SELECT</span><span class="farrow">&#8594;</span>
+      <span class="fbox ord">ORDER BY</span>
+    </div>
+    <p class="mini">Por eso el alias definido en SELECT no puede usarse en el WHERE, y el HAVING s&iacute; puede usar agregados del SELECT.</p>
+
+    <h2><span class="n">06</span>Ejemplo aplicado &mdash; comercial_db</h2>
+    <div class="cod-cap">Departamentos con salario promedio superior a $20,000 (filtra <b>grupos</b> con HAVING):</div>
+    <pre><span class="kw">SELECT</span> d.nombre AS departamento,
+       COUNT(e.id_empleado) AS empleados,
+       AVG(e.salario)       AS salario_promedio
+<span class="kw">FROM</span> empleados AS e
+<span class="kw">JOIN</span> departamentos AS d <span class="kw">ON</span> d.id_departamento = e.id_departamento
+<span class="kw">GROUP BY</span> d.nombre
+<span class="kw">HAVING</span> AVG(e.salario) &gt; 20000;</pre>
+    <div class="cod-cap">Categor&iacute;as con m&aacute;s de 10 productos, y total de clientes por sexo:</div>
+    <pre><span class="kw">SELECT</span> c.nombre, COUNT(p.id_producto) AS productos
+<span class="kw">FROM</span> categorias AS c
+<span class="kw">JOIN</span> productos AS p <span class="kw">ON</span> p.id_categoria = c.id_categoria
+<span class="kw">GROUP BY</span> c.nombre
+<span class="kw">HAVING</span> COUNT(p.id_producto) &gt; 10;
+
+<span class="kw">SELECT</span> sexo, COUNT(*) AS clientes
+<span class="kw">FROM</span> clientes
+<span class="kw">GROUP BY</span> sexo;</pre>
+
+    <div class="conclu"><b>Conclusi&oacute;n:</b> las funciones de agregado con GROUP BY y HAVING convierten miles de filas en <b>informaci&oacute;n resumida y accionable</b>: totales, promedios, m&iacute;nimos y m&aacute;ximos que sustentan la <b>toma de decisiones</b> en la empresa.</div>
+
+    <div class="fuentes">
+      <b>Fuentes:</b>
+      <ul>
+        <li>Microsoft Learn &mdash; SQL Server: funciones de agregado (SUM, AVG, COUNT, MIN, MAX) y GROUP BY.</li>
+        <li>W3Schools &mdash; SQL Tutorial: SQL GROUP BY, HAVING y funciones de agregado.</li>
+        <li>Silberschatz, Korth y Sudarshan &mdash; Fundamentos de Bases de Datos (consultas SQL y agrupamiento).</li>
+      </ul>
+    </div>
+    <div class="pie">Infograf&iacute;a acad&eacute;mica &mdash; Yeshua Emmanuel Navarro Perez | Grupo G2 | Bases de Datos &mdash; UTTT</div>
+  </div>
+</body>
+</html>
